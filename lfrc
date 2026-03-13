@@ -454,12 +454,11 @@ cmd lf_reload ${{
   map gR cd ~/opt/RESTORE
   map gT cd ~/tmp
   map gc cd ~/.config
-  map gd cd ~/gitREPO/dotfiles_linux
+  map gd cd ~/opt/docker
   map ge cd /etc
   map gh cd ~/
-  map gi cd ~/gitREPO/dotfiles_linux/i3
   map gl cd ~/.local
-  map gn cd ~/gitREPO/dotfiles_linux/nvim
+  map gn cd ~/.config/nvim
   map go cd ~/opt
   map gr cd /
   map gs cd ~/scripts
