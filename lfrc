@@ -454,6 +454,7 @@ cmd lf_reload ${{
   map gR cd ~/opt/RESTORE
   map gT cd ~/tmp
   map gc cd ~/.config
+  map gC cd ~/opt/docker/_compose/caddy/
   map gd cd ~/opt/docker
   map ge cd /etc
   map gh cd ~/
