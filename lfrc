@@ -78,10 +78,10 @@ cmd on-cd &{{
 # also run at startup
 on-cd
 
-# eza can be used to provide the file information shown in the bottom left corner:
+# exa can be used to provide the file information shown in the bottom left corner:
 # set statfmt ''
 cmd on-select %{{
-    eza -ld --color=always "$f"
+    exa -ld --color=always "$f"
 }}
 
 #####################
