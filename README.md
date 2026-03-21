@@ -6,6 +6,5 @@ curl -L https://github.com/gokcehan/lf/releases/download/r41/lf-linux-amd64.tar.
 # CLONE REPO AND LINK LF DIRECTORY
 ```bash 
 mkdir {~/.config,~/tmp/}
-cd ~/.config
-git clone https://github.com/techeddie/lf_debian.git lf
+git clone https://github.com/techeddie/lf_debian.git ~/.config/lf
 ```
