@@ -51,13 +51,12 @@
   # cmd file_preview $LESSOPEN='| ~/.config/lf/etc/preview %s' LESS='-cRiX' less $f
   cmd file_preview $LESSOPEN='| ~/.config/lf/etc/preview %s' LESS='-cRiX' cls; bat --wrap auto --paging always $f
 
-#toggle preview
-cmd toggle_preview %{{
-    if [ "$lf_preview" = "true" ]; then
-        lf -remote "send $id :set preview false; set ratios 1:5"
-    else
-        lf -remote "send $id :set preview true; set ratios 1:2:3"
-    fi
+cmd toggle_ratios &{{
+  if [ "$lf_ratios" = "1:10:1" ]; then
+  lf -remote "send $id set ratios 1:5:2"
+  else
+  lf -remote "send $id set ratios 1:10:1"
+  fi
 }}
 
 #####################
@@ -169,31 +168,31 @@ cmd link %{{
 
 #####################
 # Dynamically set number of columns
-${{
-    w=$(tput cols)
-    if [ $w -le 80 ]; then
-        lf -remote "send $id set ratios 1:2"
-    elif [ $w -le 160 ]; then
-        lf -remote "send $id set ratios 1:2:3"
-    else
-        lf -remote "send $id set ratios 1:2:3:5"
-    fi
-}}
-
-cmd recol %{{
-    if [ $lf_width -le 80 ]; then
-        lf -remote "send $id set ratios 1:2"
-    elif [ $lf_width -le 160 ]; then
-        lf -remote "send $id set ratios 1:2:3"
-    else
-        lf -remote "send $id set ratios 1:2:3:5"
-    fi
-}}
-
-cmd two_panes %{{
-    lf -remote "send $id set ratios 1:2"
-}}
-
+# ${{
+#     w=$(tput cols)
+#     if [ $w -le 80 ]; then
+#         lf -remote "send $id set ratios 1:2"
+#     elif [ $w -le 160 ]; then
+#         lf -remote "send $id set ratios 1:2:3"
+#     else
+#         lf -remote "send $id set ratios 1:2:3:5"
+#     fi
+# }}
+#
+# cmd recol %{{
+#     if [ $lf_width -le 80 ]; then
+#         lf -remote "send $id set ratios 1:2"
+#     elif [ $lf_width -le 160 ]; then
+#         lf -remote "send $id set ratios 1:2:3"
+#     else
+#         lf -remote "send $id set ratios 1:2:3:5"
+#     fi
+# }}
+#
+# cmd two_panes %{{
+#     lf -remote "send $id set ratios 1:2"
+# }}
+#
 #####################
 cmd set_wallpaper ${{
   nitrogen --set-zoom-fill "$f"
@@ -529,11 +528,10 @@ cmd lf_reload ${{
   map K :updir; up; open
   map L :link
   map - :link
-  map O push :open-with-gui<space>
-  map P toggle_preview
   map R reload
   map S :!bash
-  map V toggle_preview
+  map P toggle_ratios
+  map V toggle_ratios
   map ac push %touch<space>
   map ad push %mkdir<space>
   map af push %mkdir<space>
