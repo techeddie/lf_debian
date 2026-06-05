@@ -59,6 +59,15 @@ cmd toggle_ratios &{{
   fi
 }}
 
+# toggle ratios
+cmd toggle_ratios &{{
+  if [ "$lf_ratios" = "1:10:1" ]; then
+  lf -remote "send $id set ratios 1:5:2"
+  else
+  lf -remote "send $id set ratios 1:10:1"
+  fi
+}}
+
 #####################
 #change title on cd
 cmd on-cd &{{
@@ -563,6 +572,7 @@ cmd lf_reload ${{
   map v :invert
   map x cut
   map y copy
+  map V toggle_ratios
 
 ┃ map X $chmod +x "$f"; lf -remote "send $id reload"
 ┃ map <f-5> $$SHELL "$f"
