@@ -490,6 +490,7 @@ cmd lf_reload ${{
 
   # map <delete> :delete
   map - :link
+  map - :link
   map . set hidden!
   map <Esc> quit
   map <a-0> recol  
@@ -527,15 +528,16 @@ cmd lf_reload ${{
   map J :updir; down; open
   map K :updir; up; open
   map L :link
-  map - :link
+  map P toggle_ratios
   map R reload
   map S :!bash
-  map P toggle_ratios
+  map T :tag-toggle
   map V toggle_ratios
   map ac push %touch<space>
   map ad push %mkdir<space>
   map af push %mkdir<space>
   map dd delete
+
 #modes
   map n
   map nu extract
