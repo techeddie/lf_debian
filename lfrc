@@ -525,6 +525,7 @@ cmd lf_reload ${{
   map <c-w> :set_wallpaper
   map <enter> open
   map <f-2> rename #rename current selection
+  map <f-5> $$SHELL "$f"
   map <f-5> push :source<space>~/gitREPO/dotfiles_linux/lf/lfrc<enter>
   map <f-6> extract
   map <f-7> push %mkdir<space>
@@ -542,37 +543,31 @@ cmd lf_reload ${{
   map S :!bash
   map T :tag-toggle
   map V toggle_ratios
+  map V toggle_ratios
+  map X $chmod +x "$f"; lf -remote "send $id reload"
   map ac push %touch<space>
   map ad push %mkdir<space>
   map af push %mkdir<space>
-  map dd delete
-
-#modes
-  map n
-  map nu extract
-  map ne extract
-  map nx extract
-  map nc push %touch<space>
-  map nr rename
-  map nb push :bak
-  map nv two_panes
-
   map b :fzf_jump_history
   map b mark-load
   map c push %touch<space>
   map d
-
+  map dd delete
   map e $$EDITOR "$f"
   map f :fzf_select
   map g? $lf -doc | bat; clear
   map i %du -sh $f
+  map n
+  map nb push :bak
+  map nc push %touch<space>
+  map ne extract
+  map nr rename
+  map nu extract
+  map nv two_panes
+  map nx extract
   map o push :open-with-cli<space>
   map p paste
   map t :!bash
   map v :invert
   map x cut
   map y copy
-  map V toggle_ratios
-
-┃ map X $chmod +x "$f"; lf -remote "send $id reload"
-┃ map <f-5> $$SHELL "$f"
