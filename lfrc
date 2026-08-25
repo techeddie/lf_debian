@@ -545,12 +545,10 @@ cmd lf_reload ${{
   map V toggle_ratios
   map V toggle_ratios
   map X $chmod +x "$f"; lf -remote "send $id reload"
-  map ac push %touch<space>
-  map ad push %mkdir<space>
-  map af push %mkdir<space>
+  map a push %touch<space>
   map b :fzf_jump_history
   map b mark-load
-  map c push %touch<space>
+  map cx 
   map d
   map dd delete
   map e $$EDITOR "$f"
