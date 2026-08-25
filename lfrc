@@ -564,8 +564,15 @@ cmd lf_reload ${{
   map nv two_panes
   map nx extract
   map o push :open-with-cli<space>
-  map p paste
-  map t :!bash
-  map v :invert
-  map x cut
-  map y copy
+  map E &thunar
+  map <a-e> :!thunar .
+
+#####################
+#system / misc
+  map R reload
+  map <a-R> :lf_reload
+  map <c-r> :source ~/.config/lf/lfrc
+  map <a-r> :edit_config
+  map g? $lf -doc | bat; clear
+  map <c-c> :copy_to_clipboard
+  map <c-w> :set_wallpaper
