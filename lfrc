@@ -51,14 +51,6 @@
   # cmd file_preview $LESSOPEN='| ~/.config/lf/etc/preview %s' LESS='-cRiX' less $f
   cmd file_preview $LESSOPEN='| ~/.config/lf/etc/preview %s' LESS='-cRiX' cls; bat --wrap auto --paging always $f
 
-cmd toggle_ratios &{{
-  if [ "$lf_ratios" = "1:10:1" ]; then
-  lf -remote "send $id set ratios 1:5:2"
-  else
-  lf -remote "send $id set ratios 1:10:1"
-  fi
-}}
-
 # toggle ratios
 cmd toggle_ratios &{{
   if [ "$lf_ratios" = "1:10:1" ]; then
@@ -477,90 +469,75 @@ cmd lf_reload ${{
 
 #####################################################################
 #MAPPINGS
-  # map - z
-  # map <a-l> push :z<space>
-  # map <c-b> :bookmark_create
-  # map <c-f> :fzf_search
-  # map <esc> quit
-  # map <space> :toggle
-  # map <tab> bookmark_jump
-  # map J push :z<space>
-  # map P file_preview
-  # map a touch # a = add
-  # map b mark-load
-  # map c touch # c = create
-  # map dd delete
-  # map f search - replaced with fzf
-  # map g? $lf -doc | $PAGER; clear
-  # map gl ${{clear; git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit}}
-  # map gp ${{clear; git pull --rebase || true; echo "press ENTER"; read ENTER}}
-  # map gs ${{clear; git status; echo "press ENTER"; read ENTER}}
-  # map p paste
 
-  # map <delete> :delete
-  map - :link
-  map - :link
-  map . set hidden!
+#####################
+#navigation
   map <Esc> quit
-  map <a-0> recol  
-  map <a-R> :lf_reload
-  map <a-X> :unmake_executeable 
-  map <a-e> :!thunar .
-  map <a-f> :fzf_jump_max_folder
-  map <a-h> :fzf_jump_hidden
-  map <a-m> $vimv $fx   #renaming VI like
-  map <a-p> :file_preview 
-  map <a-r> :edit_config
-  map <a-t> :tag-toggle
-  map <a-v> two_panes
-  map <a-x> :make_executeable 
+  map <c-k> quit
+  map <c-q> quit
   map <backspace2> updir
   map <backspace> :fzf_jump_history
-  map <c-c> :copy_to_clipboard
-  map <c-f> :fzf_search
-  map <c-k> quit
-  map <c-n> push %touch<space>
-  map <c-q> quit
-  map <c-r> :source ~/.config/lf/lfrc
-  map <c-w> :set_wallpaper
-  map <enter> open
-  map <f-2> rename #rename current selection
-  map <f-5> $$SHELL "$f"
-  map <f-5> push :source<space>~/gitREPO/dotfiles_linux/lf/lfrc<enter>
-  map <f-6> extract
-  map <f-7> push %mkdir<space>
-  map <space> :toggle 
   map <tab> :fzf_jump_history
-  map = filter
-  map D :delete
-  map E &thunar
+  map <c-f> :fzf_search
+  map <a-f> :fzf_jump_max_folder
+  map <a-h> :fzf_jump_hidden
   map F :fzf_jump_max
+  map f :fzf_select
+  map <enter> open
   map J :updir; down; open
   map K :updir; up; open
-  map L :link
-  map P toggle_ratios
-  map R reload
-  map S :!bash
-  map T :tag-toggle
-  map V toggle_ratios
-  map V toggle_ratios
-  map X $chmod +x "$f"; lf -remote "send $id reload"
-  map a push %touch<space>
-  map b :fzf_jump_history
-  map b mark-load
-  map cx 
+  map . set hidden!
+  map = filter
+
+#####################
+#selection / editing
+  map <space> :toggle
+  map v :invert
+  map x cut
+  map y copy
+  map p paste
+  map D :delete
   map d
   map dd delete
+  map - :link
+  map L :link
+  map <f-2> rename #rename current selection
+  map nr rename
+  map a push %touch<space>
+  map <c-n> push %touch<space>
+  map nc push %touch<space>
+  map <f-7> push %mkdir<space>
+  map <a-m> $vimv $fx   #renaming VI like
   map e $$EDITOR "$f"
-  map f :fzf_select
-  map g? $lf -doc | bat; clear
   map i %du -sh $f
+  map X $chmod +x "$f"; lf -remote "send $id reload"
+  map <a-x> :make_executeable
+  map <a-X> :unmake_executeable
+
+#####################
+#archives
+  map <f-5> push :tar<space> #create archive from selection
+  map <f-6> extract
   map n
   map nb push :bak
-  map nc push %touch<space>
-  map ne extract
-  map nr rename
-  map nu extract
+
+#####################
+#marks / tags
+  map b mark-load
+  map T :tag-toggle
+  map <a-t> :tag-toggle
+
+#####################
+#run / shell
+  map cx $bash "$f"   #execute current file with bash
+  map S :!bash
+  map t :!bash
+
+#####################
+#view / layout
+  map P toggle_ratios
+  map V toggle_ratios
+  map <a-v> two_panes
   map nv two_panes
   map <a-0> recol
   map <a-p> :file_preview
