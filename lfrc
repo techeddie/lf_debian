@@ -562,7 +562,8 @@ cmd lf_reload ${{
   map nr rename
   map nu extract
   map nv two_panes
-  map nx extract
+  map <a-0> recol
+  map <a-p> :file_preview
   map o push :open-with-cli<space>
   map E &thunar
   map <a-e> :!thunar .
