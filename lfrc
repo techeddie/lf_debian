@@ -300,10 +300,17 @@ cmd set_wallpaper ${{
 #####################
 #LAZYGIT
   cmd lazygit ${{
-      lazygit 
+      lazygit
   }}
   map <a-g> :lazygit
   map <c-g> :lazygit
+
+#####################
+#NCDU
+  cmd ncdu ${{
+      ncdu
+  }}
+  map <c-a-n> :ncdu
 
 
 #####################
