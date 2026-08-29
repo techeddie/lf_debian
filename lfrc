@@ -310,7 +310,7 @@ cmd set_wallpaper ${{
   cmd ncdu ${{
       ncdu
   }}
-  map <c-a-n> :ncdu
+  map <s-f-9> :ncdu
 
 
 #####################
