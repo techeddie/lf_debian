@@ -6,10 +6,13 @@
 #SETTER END
 ##########################################################
 
+# Ask before deleting, list targets first
   cmd delete ${{
       set -f
-      rm -rf $fx
-      lf -remote "send $id reload"
+      printf '%s\n' $fx
+      printf 'Delete permanently? [y/N] '
+      read -r ans
+      [ "$ans" = y ] && rm -rf -- $fx
   }}
 
 ##########################################################
