@@ -376,7 +376,7 @@ cmd lf_reload ${{
      # set -x
 
      # In theory, this may fail,
-     # but I tested it on selection with 10k files - everything worked (bash)
+     # but I tested it on selection with 10k files - everything worked (fish)
      set -- $(cat ~/.local/share/lf/files)
      mode="$1"
      shift
@@ -537,9 +537,9 @@ cmd lf_reload ${{
 
 #####################
 #run / shell
-  map cx $bash "$f"   #execute current file with bash
-  map S :!bash
-  map t :!bash
+  map cx $fish "$f"   #execute current file with fish
+  map S :!fish
+  map t :!fish
 
 #####################
 #view / layout
